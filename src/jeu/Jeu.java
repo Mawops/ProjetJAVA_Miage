@@ -4,9 +4,11 @@ public class Jeu {
     private GUI gui; 
 	private Zone zoneCourante;
 	private Joueur joueur;
+	private static int nombreIndice = 10;
     
     public Jeu() {
         creerCarte();
+        creerJoueur("Camarade");
         gui = null;
     }
 
@@ -20,7 +22,7 @@ public class Jeu {
     private void creerCarte() {
 
         Zone [] zones = new Zone [10];
-        zones[0] = new Zone("le hall", "Couloir.jpg", new PNJ("test", "jai vu test2 faire ca dans la salla à manger"), null);
+        zones[0] = new Zone("le hall", "Couloir.jpg");
         zones[1] = new Zone("la salle à manger", "Escalier.jpg" );
         zones[2] = new Zone("la salle de jeux", "GrandeSalle.jpg" );
         zones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
@@ -43,17 +45,24 @@ public class Jeu {
         zoneCourante = zones[0];
     }
 
+    private void creerPNJ()
+    {
+
+    }
+
     private void afficherLocalisation() {
             gui.afficher( zoneCourante.descriptionLongue());
             gui.afficher();
     }
 
     private void afficherMessageDeBienvenue() {
-    	gui.afficher("Bienvenue !");
+    	gui.afficher("Bienvenue " + joueur.getNom() + " !");
     	gui.afficher();
         gui.afficher("Tapez '?' pour obtenir de l'aide.");
         gui.afficher();
-        gui.afficher("Quel est votre nom ?");
+        gui.afficher("Il y a eu un meurtre dans le manoir de Mr et Mme Duchêne, et tu vas m'aider à le résoudre !");
+        gui.afficher();
+        gui.afficher("Allons récupérer les clé du manoir au concierge.");
         gui.afficher();
         afficherLocalisation();
         gui.afficheImage(zoneCourante.nomImage());
@@ -81,17 +90,10 @@ public class Jeu {
         	terminer();
         	break;
         case "PARLER" : case "P" :
-            if(zoneCourante.PNJ())
-            {
-                gui.afficher(zoneCourante.getDescriptionPNJ());
-                joueur.ajouter(new Indices(zoneCourante.getDescriptionPNJ(), "temoignage", zoneCourante));
-            }
-            else gui.afficher("Il n'y a personne dans la pièce.");
+            parler();
             break;
          case "RECHERCHER" : case "R" :
-            if(zoneCourante.indice())
-                joueur.ajouter(zoneCourante.getIndice());
-            else gui.afficher("Il n'y a pas d'indice dans la pièce");
+            rechercher();
             break;
        	default : 
             gui.afficher("Commande inconnue");
@@ -124,9 +126,7 @@ public class Jeu {
 
     private boolean verifierIndice()
     {
-        boolean indiceVerifie = false;
-
-        return indiceVerifie;
+        return joueur.getNbIndice() == nombreIndice;
     }
 
     private void resoudreEnquete(String lireNom, String lireArme)
@@ -134,23 +134,30 @@ public class Jeu {
         int nbChance = 1;
         boolean trouve = false;
 
-        while(nbChance <= 3 && !trouve)
+        if(verifierIndice())
         {
-            if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
+            while(nbChance <= 3 && !trouve)
             {
-                gui.afficher("Bravo vous avez réussi à resoudre l'enquête !");
-                terminer();
-                trouve = true;
+                if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
+                {
+                    gui.afficher("Bravo vous avez réussi à resoudre l'enquête !");
+                    terminer();
+                    trouve = true;
+                }
+                else
+                {
+                    nbChance ++;
+                }
             }
-            else
+            if(!trouve)
             {
-                nbChance ++;
+                gui.afficher("Vous n'avez pas réussi à résoudre l'enquête... Dommage");
+                terminer();
             }
         }
-        if(!trouve)
+        else
         {
-            gui.afficher("Vous n'avez pas réussi à résoudre l'enquête... Dommage");
-            terminer();
+            gui.afficher("Vous n'avez pas récupérer tous les indices, vous ne pouvez donc pas encore résoudre l'enquête.");
         }
     }
 
@@ -158,8 +165,18 @@ public class Jeu {
     {
         if(zoneCourante.PNJ())
         {
-
+            Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
+            gui.afficher(zoneCourante.getDescriptionPNJ());
+            joueur.ajouterIndice(i);
         }
+        else gui.afficher("Il n'y a personne dans la pièce.");
+    }
+
+    private void rechercher()
+    {
+        if(zoneCourante.indice())
+            joueur.ajouterIndice(zoneCourante.getIndice());
+        else gui.afficher("Il n'y a pas d'indice dans la pièce");
     }
 
     private void terminer() {

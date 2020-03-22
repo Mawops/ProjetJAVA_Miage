@@ -8,7 +8,9 @@ public enum Commande {
 	EST("E", "E (aller à la sortie est)"), 
 	OUEST("O", "O (aller à la sortie ouest)"), 
 	AIDE("?", "? (aide)"), 
-	QUITTER("Q", "Q (quitter)");
+	QUITTER("Q", "Q (quitter)"),
+	PARLER("P", "P (Parler)"),
+	RECHERCHER("R", "R (Rechercher)");
 
 	private String abreviation;
 	private String description;
