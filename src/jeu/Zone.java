@@ -67,5 +67,15 @@ public class Zone
     {
         return this.indice;
     }
+
+    public void ajouteIndice(Indices i)
+    {
+        this.indice = i;
+    }
+
+    public void indiceRecupere()
+    {
+        this.indice = null;
+    }
 }
 
