@@ -55,16 +55,12 @@ public class Zone
 
     public boolean PNJ()
     {
-        if(personnagePNJ != null)
-            return true;
-        else return false;
+        return personnagePNJ != null;
     }
 
     public boolean indice()
     {
-        if(indice != null)
-            return true;
-        else return false;
+        return indice != null;
     }
 
     public Indices getIndice()
