@@ -15,6 +15,8 @@ public class Jeu {
         creerCarte();
         creerJoueur("Camarade");
         creerPNJ();
+        LierPnjToZone();
+
         gui = null;
     }
 
@@ -25,12 +27,23 @@ public class Jeu {
         joueur = new Joueur(lireNom);
     }
 
+    //Ajout des PNJ aux zones au lancement du jeu
+    private void LierPnjToZone()
+    {
+        lesZones[0].ajouterPNJSurMap(lesPnj.get(2));
+        lesZones[1].ajouterPNJSurMap(lesPnj.get(1));
+        lesZones[2].ajouterPNJSurMap(lesPnj.get(0));
+        lesZones[6].ajouterPNJSurMap(lesPnj.get(5));
+        lesZones[8].ajouterPNJSurMap(lesPnj.get(4));
+        //Pierre n'apparaît pas tant qu'on a pas trouver la lettre d'Agathe
+    }
+
     private void creerCarte() {
 
         //Zone [] zones = new Zone [11];
         lesZones[0] = new Zone("le hall", "Couloir.jpg");
-        lesZones[1] = new Zone("la salle à manger", "Escalier.jpg" );
-        lesZones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg" );
+        lesZones[1] = new Zone("la salle à manger", "Escalier.jpg");
+        lesZones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg");
         lesZones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
         lesZones[4] = new Zone("la chambre 1", "chambre1.jpg");
         lesZones[5] = new Zone("la chambre des Duchêne", ".png");
@@ -85,19 +98,12 @@ public class Jeu {
     private void creerPNJ()
     {
         lesPnj.add(new PNJ("Duchêne", "...", true));
-        lesPnj.get(0).setEmplacement(lesZones[2].toString()); //Attribution d'un emplacement a chaque PNJ
         lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
-        lesPnj.get(1).setEmplacement(lesZones[1].toString());
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin! Il n'y a pas une minute à perdre!", true));
-        lesPnj.get(2).setEmplacement((lesZones[0].toString()));
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
-        //Il n'apparaît pas tant qu'on a pas trouver la lettre d'Agathe
-
         lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là que j'ai découvert le corps sans vie.", true));
-        lesPnj.get(4).setEmplacement((lesZones[8].toString()));
         lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurais pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref bougez vous de trouver le meurtrier!", false));
-        lesPnj.get(5).setEmplacement((lesZones[6].toString()));
     }
 
     private void afficherLocalisation() {
@@ -218,7 +224,7 @@ public class Jeu {
         if(zoneCourante.PNJ())
         {
             Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
-            gui.afficher(zoneCourante.getDescriptionPNJ());
+            gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
             joueur.ajouterIndice(i);
         }
         else gui.afficher("Il n'y a personne dans la pièce.");

@@ -24,6 +24,17 @@ public class Zone
         indice = pIndice;
     }
 
+    public Zone(String description, String image, PNJ pPersonnagePNJ) {
+        this.description = description;
+        nomImage = image;
+        sorties = new HashMap<>();
+        personnagePNJ = pPersonnagePNJ;
+    }
+
+    public void ajouterPNJSurMap(PNJ unPnj) { this.personnagePNJ = unPnj; }
+
+    public PNJ getPNJ() { return this.personnagePNJ; }
+
     public void ajouteSortie(Sortie sortie, Zone zoneVoisine) {
         sorties.put(sortie.name(), zoneVoisine);
     }
