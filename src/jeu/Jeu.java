@@ -230,23 +230,37 @@ public class Jeu {
         else gui.afficher("Il n'y a personne dans la pièce.");
     }
 
-    private void rechercher()
+     private void rechercher()
     {
         if(zoneCourante.indice())
         {
             joueur.ajouterIndice(zoneCourante.getIndice());
             gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
-            if(zoneCourante.getIndice().getNom() == "Observation du corps")
-                zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
-            else if(zoneCourante.getIndice().getNom() == "Bouts de verre")
-                zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard. " +
+            if(zoneCourante.getIndice().getNom() == "Observation du corps") {
+                zoneCourante.ajouteIndice(new Indice("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
+                lesPnj.get(2).setTemoignage("Mr Duchêne a été tué par arme tranchante!");
+            }
+                else if(zoneCourante.getIndice().getNom() == "Bouts de verre")
+            {
+                zoneCourante.ajouteIndice(new Indice("Vous avez trouvé un bouton de chemise sous la table de billard. " +
                         "Ce bouton ressemble comme deux gouttes d'eau à celui de Pierre, ce dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
+                lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bisarre ..");
+            }
+            else if(zoneCourante.getIndice().getNom() == "Arme du crime")
+                lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit etre cette garce d'Agathe!");
+
+            else if(zoneCourante.getIndice().getNom() == "Témoignage")
+            {
+                lesPnj.get(3).setTemoignage("Je.... je comprends pas cette lettre . Certes ce mec n'etait pas tellement mon ami ...  ");
+                gui.afficher("il manque quelque chose dans sa chemise...");
+            }
+            else if(zoneCourante.getIndice().getNom() == "Alliance")
+                gui.afficher("Mme Duchêne est suspecte");
             else zoneCourante.indiceRecupere();
         }
         else gui.afficher("Il n'y a pas d'indice dans la pièce");
         gui.afficher();
     }
-
     private void terminer() {
     	gui.afficher( "Au revoir...");
     	gui.enable( false);
