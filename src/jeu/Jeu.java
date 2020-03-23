@@ -1,14 +1,18 @@
 package jeu;
+import java.util.*;
+
 public class Jeu {
 	
     private GUI gui; 
 	private Zone zoneCourante;
 	private Joueur joueur;
 	private static int nombreIndice = 10;
+    private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
     
     public Jeu() {
         creerCarte();
         creerJoueur("Camarade");
+        creerPNJ();
         gui = null;
     }
 
@@ -78,7 +82,16 @@ public class Jeu {
 
     private void creerPNJ()
     {
+        lesPnj.add(new PNJ("Duchêne", "...", true));
+        //lesPnj.get(0).setEmplacement(); //Je doit récupérer le tableau de zone pour attribuer une zone a chaque PNJ
+        lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
+        lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin! Il n'y a pas une minute à perdre!", true));
 
+        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
+        //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
+
+        lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là que j'ai découvert le corps sans vie.", true));
+        lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurais pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref bougez vous de trouver le meurtrier!", false));
     }
 
     private void afficherLocalisation() {
