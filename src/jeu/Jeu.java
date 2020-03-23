@@ -122,6 +122,8 @@ public class Jeu {
         gui.afficher();
         gui.afficher("Allons récupérer les clé du manoir au concierge.");
         gui.afficher();
+	gui.afficher("Ensuite aller à la salle de jeu (à l'est) pour examiner le corps du cadavre");
+        gui.afficher();
         afficherLocalisation();
         gui.afficheImage(zoneCourante.nomImage());
     }
