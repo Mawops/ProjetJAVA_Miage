@@ -1,21 +1,16 @@
 package jeu;
 import java.util.*;
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 public class Jeu {
 	
     private GUI gui; 
 	private Zone zoneCourante;
 	private Joueur joueur;
 	private static int nombreIndice = 10;
-<<<<<<< HEAD
+
+	private Zone [] lesZones = new Zone[11];
     private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
-=======
-	private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
->>>>>>> master
-    
+
     public Jeu() {
         creerCarte();
         creerJoueur("Camarade");
@@ -32,80 +27,77 @@ public class Jeu {
 
     private void creerCarte() {
 
-        Zone [] zones = new Zone [11];
-        zones[0] = new Zone("le hall", "Couloir.jpg");
-        zones[1] = new Zone("la salle à manger", "Escalier.jpg" );
-        zones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg" );
-        zones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
-        zones[4] = new Zone("la chambre 1", "chambre1.jpg");
-        zones[5] = new Zone("la chambre des Duchêne", ".png");
-        zones[6] = new Zone("la bibliothèque", ".png");
-        zones[7] = new Zone("la salle de bain", ".png");
-        zones[8] = new Zone("la buanderie", ".png");
-        zones[9] = new Zone("la cave", ".png");
-        zones[10] = new Zone("le couloir", ".jpg");
+        //Zone [] zones = new Zone [11];
+        lesZones[0] = new Zone("le hall", "Couloir.jpg");
+        lesZones[1] = new Zone("la salle à manger", "Escalier.jpg" );
+        lesZones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg" );
+        lesZones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
+        lesZones[4] = new Zone("la chambre 1", "chambre1.jpg");
+        lesZones[5] = new Zone("la chambre des Duchêne", ".png");
+        lesZones[6] = new Zone("la bibliothèque", ".png");
+        lesZones[7] = new Zone("la salle de bain", ".png");
+        lesZones[8] = new Zone("la buanderie", ".png");
+        lesZones[9] = new Zone("la cave", ".png");
+        lesZones[10] = new Zone("le couloir", ".jpg");
 
         /*rez de chaussée */
-        zones[0].ajouteSortie(Sortie.OUEST, zones[1]);
-        zones[0].ajouteSortie(Sortie.NORD, zones[3]);
-        zones[0].ajouteSortie(Sortie.EST, zones[2]);
+        lesZones[0].ajouteSortie(Sortie.OUEST, lesZones[1]);
+        lesZones[0].ajouteSortie(Sortie.NORD, lesZones[3]);
+        lesZones[0].ajouteSortie(Sortie.EST, lesZones[2]);
 
-        zones[1].ajouteSortie(Sortie.EST, zones[0]);
-        zones[1].ajouteSortie(Sortie.SUD, zones[6]);
+        lesZones[1].ajouteSortie(Sortie.EST, lesZones[0]);
+        lesZones[1].ajouteSortie(Sortie.SUD, lesZones[6]);
 
-        zones[2].ajouteSortie(Sortie.OUEST, zones[0]);
-        zones[3].ajouteSortie(Sortie.SUD, zones[0]);
+        lesZones[2].ajouteSortie(Sortie.OUEST, lesZones[0]);
+        lesZones[3].ajouteSortie(Sortie.SUD, lesZones[0]);
 
         /*Premier étage */
-        zones[6].ajouteSortie(Sortie.NORD, zones[1]);
-        zones[6].ajouteSortie(Sortie.SUD, zones[10]);
+        lesZones[6].ajouteSortie(Sortie.NORD, lesZones[1]);
+        lesZones[6].ajouteSortie(Sortie.SUD, lesZones[10]);
 
-        zones[10].ajouteSortie(Sortie.SUD, zones[7]);
-        zones[10].ajouteSortie(Sortie.NORD, zones[6]);
-        zones[10].ajouteSortie(Sortie.OUEST, zones[5]);
-        zones[10].ajouteSortie(Sortie.EST, zones[4]);
+        lesZones[10].ajouteSortie(Sortie.SUD, lesZones[7]);
+        lesZones[10].ajouteSortie(Sortie.NORD, lesZones[6]);
+        lesZones[10].ajouteSortie(Sortie.OUEST, lesZones[5]);
+        lesZones[10].ajouteSortie(Sortie.EST, lesZones[4]);
 
-        zones[7].ajouteSortie(Sortie.NORD, zones[10]);
-        zones[7].ajouteSortie(Sortie.SUD, zones[8]);
+        lesZones[7].ajouteSortie(Sortie.NORD, lesZones[10]);
+        lesZones[7].ajouteSortie(Sortie.SUD, lesZones[8]);
 
-        zones[4].ajouteSortie(Sortie.OUEST, zones[10]);
-        zones[5].ajouteSortie(Sortie.EST, zones[10]);
+        lesZones[4].ajouteSortie(Sortie.OUEST, lesZones[10]);
+        lesZones[5].ajouteSortie(Sortie.EST, lesZones[10]);
 
         /*sous-sol*/
-        zones[8].ajouteSortie(Sortie.SUD, zones[7]);
-        zones[8].ajouteSortie(Sortie.EST, zones[9]);
-        zones[9].ajouteSortie(Sortie.OUEST, zones[8]);
+        lesZones[8].ajouteSortie(Sortie.SUD, lesZones[7]);
+        lesZones[8].ajouteSortie(Sortie.EST, lesZones[9]);
+        lesZones[9].ajouteSortie(Sortie.OUEST, lesZones[8]);
 
-        zoneCourante = zones[0];
+        zoneCourante = lesZones[0];
 
         /*ajouter les indices*/
-        zones[6].ajouteIndice(new Indices("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Témoignage", zones[6]));
-        zones[5].ajouteIndice(new Indices("Alliance de Mr Duchêne", "Alliance", zones[5]));
-        zones[3].ajouteIndice(new Indices("Couteau fraîchement nettoyé et dissimulé dans le tiroir parmis les fourchettes", "Arme du crime", zones[3]));
-        zones[2].ajouteIndice(new Indices("Le corps à trois plaies profondes dans le torse, " +
-                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr Duchêne est manquante", "Observation du corps", zones[2]));
+        lesZones[6].ajouteIndice(new Indices("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Témoignage", lesZones[6]));
+        lesZones[5].ajouteIndice(new Indices("Alliance de Mr Duchêne", "Alliance", lesZones[5]));
+        lesZones[3].ajouteIndice(new Indices("Couteau fraîchement nettoyé et dissimulé dans le tiroir parmis les fourchettes", "Arme du crime", lesZones[3]));
+        lesZones[2].ajouteIndice(new Indices("Le corps à trois plaies profondes dans le torse, " +
+                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr Duchêne est manquante", "Observation du corps", lesZones[2]));
 
     }
 
     private void creerPNJ()
     {
         lesPnj.add(new PNJ("Duchêne", "...", true));
-        //lesPnj.get(0).setEmplacement(); //Je doit récupérer le tableau de zone pour attribuer une zone a chaque PNJ
+        lesPnj.get(0).setEmplacement(lesZones[2].toString()); //Attribution d'un emplacement a chaque PNJ
         lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
+        lesPnj.get(1).setEmplacement(lesZones[1].toString());
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin! Il n'y a pas une minute à perdre!", true));
-<<<<<<< HEAD
-
+        lesPnj.get(2).setEmplacement((lesZones[0].toString()));
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
+        //Il n'apparaît pas tant qu'on a pas trouver la lettre d'Agathe
 
-=======
-
-        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
-        //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
-
->>>>>>> master
         lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là que j'ai découvert le corps sans vie.", true));
+        lesPnj.get(4).setEmplacement((lesZones[8].toString()));
         lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurais pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref bougez vous de trouver le meurtrier!", false));
+        lesPnj.get(5).setEmplacement((lesZones[6].toString()));
     }
 
     private void afficherLocalisation() {
