@@ -1,13 +1,20 @@
 package jeu;
 import java.util.*;
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 public class Jeu {
 	
     private GUI gui; 
 	private Zone zoneCourante;
 	private Joueur joueur;
 	private static int nombreIndice = 10;
+<<<<<<< HEAD
     private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
+=======
+	private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
+>>>>>>> master
     
     public Jeu() {
         creerCarte();
@@ -27,9 +34,9 @@ public class Jeu {
 
         Zone [] zones = new Zone [11];
         zones[0] = new Zone("le hall", "Couloir.jpg");
-        zones[1] = new Zone("la salle à manger", "SalleAManger.jpg" );
+        zones[1] = new Zone("la salle à manger", "Escalier.jpg" );
         zones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg" );
-        zones[3] = new Zone("la cuisine", ".jpg" );
+        zones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
         zones[4] = new Zone("la chambre 1", "chambre1.jpg");
         zones[5] = new Zone("la chambre des Duchêne", ".png");
         zones[6] = new Zone("la bibliothèque", ".png");
@@ -86,13 +93,17 @@ public class Jeu {
         //lesPnj.get(0).setEmplacement(); //Je doit récupérer le tableau de zone pour attribuer une zone a chaque PNJ
         lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin! Il n'y a pas une minute à perdre!", true));
+<<<<<<< HEAD
 
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
 
+=======
+
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
 
+>>>>>>> master
         lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là que j'ai découvert le corps sans vie.", true));
         lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurais pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref bougez vous de trouver le meurtrier!", false));
     }
