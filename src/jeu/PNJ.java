@@ -38,8 +38,4 @@ public class PNJ extends Personnage{
             return "Mme." + this.getNom();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
