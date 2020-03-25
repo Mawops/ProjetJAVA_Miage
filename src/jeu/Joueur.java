@@ -1,13 +1,15 @@
 package jeu;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Joueur extends Personnage {
 
     private ArrayList<Indices> listeIndice;
 
     /**
-     *
+     *Constructeur
+     *Initialise la liste des indices
      * @param pNom
      */
     public Joueur(String pNom)
@@ -17,9 +19,9 @@ public class Joueur extends Personnage {
     }
 
     /**
-     *
-     * @param nom
-     * @return
+     * recherche un indice dans la liste
+     * @param nom : nom de l'indice
+     * @return true or false
      */
     public boolean trouverIndice(String nom)
     {
@@ -35,8 +37,8 @@ public class Joueur extends Personnage {
     }
 
     /**
-     *
-     * @param i
+     * ajoute un nouvel indice dans la liste
+     * @param i : indice à ajouter
      */
     public void ajouterIndice(Indices i)
     {
@@ -44,11 +46,20 @@ public class Joueur extends Personnage {
     }
 
     /**
-     *
+     *retourne le nombre d'indice dans la liste
      * @return
      */
     public int getNbIndice()
     {
         return listeIndice.size();
+    }
+
+    /**
+     * retourne la liste d'indice
+     * @return
+     */
+    public ArrayList<Indices> getIndice()
+    {
+    	return listeIndice;
     }
 }
