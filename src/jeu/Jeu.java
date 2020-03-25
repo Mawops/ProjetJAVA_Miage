@@ -158,11 +158,14 @@ public class Jeu {
          case "RECHERCHER" : case "R" :
             rechercher();
             break;
+         case "ACCUSER" : case "A" :
+
        	default : 
             gui.afficher("Commande inconnue");
             break;
         }
     }
+
 
     private void afficherAide() {
         gui.afficher("Etes-vous perdu ?");
@@ -192,7 +195,7 @@ public class Jeu {
         return joueur.getNbIndice() == nombreIndice;
     }
 
-    private void resoudreEnquete(String lireNom, String lireArme)
+    public void resoudreEnquete(String lireNom, String lireArme)
     {
         int nbChance = 1;
         boolean trouve = false;
@@ -204,23 +207,28 @@ public class Jeu {
                 if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
                 {
                     gui.afficher("Bravo vous avez réussi à résoudre l'enquête !");
+                    gui.afficher();
                     terminer();
                     trouve = true;
                 }
                 else
                 {
+                    gui.afficher("Je doute que se soit vraiment le tueur ou l'arme du crime !");
+                    gui.afficher();
                     nbChance ++;
                 }
             }
             if(!trouve)
             {
                 gui.afficher("Vous n'avez pas réussi à résoudre l'enquête... Dommage");
+                gui.afficher();
                 terminer();
             }
         }
         else
         {
             gui.afficher("Vous n'avez pas récupérer tous les indices, vous ne pouvez donc pas encore résoudre l'enquête.");
+            gui.afficher();
         }
     }
 

@@ -79,4 +79,17 @@ public class GUI implements ActionListener
         entree.setText("");
         jeu.traiterCommande( commandeLue);
     }
+
+    private void executeCommande()
+    {
+        afficher("Quel est le tueur ? ");
+        afficher();
+        String tueur = entree.getText();
+        entree.setText("");
+        afficher("Quel est l'arme ? ");
+        afficher();
+        String arme = entree.getText();
+        entree.setText("");
+        jeu.resoudreEnquete(tueur, arme);
+    }
 }
