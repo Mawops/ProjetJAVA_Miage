@@ -5,9 +5,6 @@ public class Main {
 		GUI gui = new GUI( jeu);
 		jeu.setGUI( gui);
 		Chrono timerjeu= new Chrono();
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 	}
 }

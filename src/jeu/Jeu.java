@@ -7,15 +7,9 @@ public class Jeu {
 	private Zone zoneCourante;
 	private Joueur joueur;
 	private static int nombreIndice = 10;
-<<<<<<< Updated upstream
-
 	private Zone [] lesZones = new Zone[11];
     private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
 
-=======
-    private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
-    
->>>>>>> Stashed changes
     public Jeu() {
         creerCarte();
         creerJoueur("Camarade");
@@ -105,10 +99,6 @@ public class Jeu {
         lesPnj.add(new PNJ("Duchêne", "...", true));
         lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin! Il n'y a pas une minute à perdre!", true));
-<<<<<<< Updated upstream
-        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
-        //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
-=======
 
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
@@ -117,7 +107,6 @@ public class Jeu {
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celà pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur sont bouton de chemise, sont témoignage change et qu'il devienne hésitant
 
->>>>>>> Stashed changes
         lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là que j'ai découvert le corps sans vie.", true));
         lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurais pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref bougez vous de trouver le meurtrier!", false));
     }
@@ -253,12 +242,12 @@ public class Jeu {
             joueur.ajouterIndice(zoneCourante.getIndice());
             gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
             if(zoneCourante.getIndice().getNom() == "Observation du corps") {
-                zoneCourante.ajouteIndice(new Indice("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
+                zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
                 lesPnj.get(2).setTemoignage("Mr Duchêne a été tué par arme tranchante!");
             }
                 else if(zoneCourante.getIndice().getNom() == "Bouts de verre")
             {
-                zoneCourante.ajouteIndice(new Indice("Vous avez trouvé un bouton de chemise sous la table de billard. " +
+                zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard. " +
                         "Ce bouton ressemble comme deux gouttes d'eau à celui de Pierre, ce dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
                 lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bisarre ..");
             }

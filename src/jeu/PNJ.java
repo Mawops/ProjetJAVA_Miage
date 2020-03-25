@@ -38,12 +38,6 @@ public class PNJ extends Personnage{
             return "Mme." + this.getNom();
         }
     }
-<<<<<<< Updated upstream
 
 }
 
-
-
-=======
-}
->>>>>>> Stashed changes
