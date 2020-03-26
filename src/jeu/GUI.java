@@ -55,10 +55,10 @@ public class GUI implements ActionListener
             }
         };
 
-        /* instanciation du timer */
+        /* instanciation du timer
         final Timer timer1= new Timer(delais,tache_timer);
 
-        /* Ajout des composants aux conteneurs avec formatage */
+        /* Ajout des composants aux conteneurs avec formatage
         Panel1.add(debut);
         Panel1.add(fin);
         Label1.setBorder(new EmptyBorder(10,135,10,10));
@@ -66,7 +66,7 @@ public class GUI implements ActionListener
         fenetre.getContentPane().add(Panel1,"South");
 
         /* Action provoqué par l'utilisateur */
-        /* Lors du clic sur le bouton debut */
+        /* Lors du clic sur le bouton debut
         debut.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -86,7 +86,7 @@ public class GUI implements ActionListener
             }
         });
 
-        /* Lors du clic sur le bouton fin */
+        /* Lors du clic sur le bouton fin
         fin.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -104,12 +104,12 @@ public class GUI implements ActionListener
             }
         });
 
-        /* Afficher l'ihm */
+        /* Afficher l'ihm
         fenetre.pack();
         //fenetre.setLocation(350,200);  /* Déplacer la fenetre à ce nouvel emplacement */
         //fenetre.setSize(300,100);   /* dimension de la fenetre */
         //fenetre.show();
-    }
+
 
 
     
