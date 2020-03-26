@@ -7,7 +7,7 @@ public class Jeu {
     private GUI gui;
 	private Zone zoneCourante;
 	private Joueur joueur;
-	private int nombreIndice = 0;
+	private int nombreIndice = 15;
 	private Zone [] lesZones = new Zone[11];
     private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
 
@@ -123,10 +123,6 @@ public class Jeu {
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin ! Il n'y a pas une minute à perdre!", true));
 
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
-        //Pour Pierre il faut que lorsqu'on le questionne sur son bouton de chemise, son témoignage change et qu'il devienne hésitant
-
-
-        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection que celÃ  pour M.DuchÃªne, mais c'Ã©tait un trÃ¨s bon ami d'Agathe.", true));
         //Pour Pierre il faut que lorsqu'on le questionne sur son bouton de chemise, son témoignage change et qu'il devienne hésitant
 
         lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là  que j'ai découvert le corps sans vie.", true));
@@ -330,7 +326,6 @@ public class Jeu {
         if(zoneCourante.indice())
         {
             joueur.ajouterIndice(zoneCourante.getIndice());
-            nombreIndice ++;
             gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
             if(zoneCourante.getIndice().getNom() == "Observation du corps") {
