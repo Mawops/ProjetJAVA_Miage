@@ -2,7 +2,7 @@ package jeu;
 
 public abstract class Personnage {
 
-    private String nom;
+    protected String nom;
 
     /**
      * Constructeur
