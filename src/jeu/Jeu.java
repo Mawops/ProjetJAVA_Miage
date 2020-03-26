@@ -165,37 +165,54 @@ public class Jeu {
      */
     public void traiterCommande(String commandeLue) {
     	gui.afficher( "> "+ commandeLue + "\n");
-        switch (commandeLue.toUpperCase()) {
-        case "?" : case "AIDE" :
-            afficherAide();
-        	break;
-        case "N" : case "NORD" :
-        	allerEn( "NORD");
-        	break;
-       case "S" : case "SUD" :
-        	allerEn( "SUD");
-        	break;
-        case "E" : case "EST" :
-        	allerEn( "EST");
-        	break;
-        case "O" : case "OUEST" :
-        	allerEn( "OUEST");
-        	break;
-        case "Q" : case "QUITTER" :
-        	terminer();
-        	break;
-        case "PARLER" : case "P" :
-            parler();
-            break;
-         case "RECHERCHER" : case "R" :
-            rechercher();
-            break;
-         case "SAC" :
-        	 SacADos();
-        	 break;
-       	default :
-            gui.afficher("Commande inconnue");
-            break;
+        if(zoneCourante.getPNJ().getNom() == "Indigo" && commandeLue.toUpperCase().matches("OUI [A-Z]* [A-Z]*"))
+        {
+            String[] parts = commandeLue.toUpperCase().split(" ");
+            String meurtrier = parts[2];
+            String arme = parts[1];
+            resoudreEnquete(meurtrier, arme);
+        }
+        else {
+            switch (commandeLue.toUpperCase()) {
+                case "?":
+                case "AIDE":
+                    afficherAide();
+                    break;
+                case "N":
+                case "NORD":
+                    allerEn("NORD");
+                    break;
+                case "S":
+                case "SUD":
+                    allerEn("SUD");
+                    break;
+                case "E":
+                case "EST":
+                    allerEn("EST");
+                    break;
+                case "O":
+                case "OUEST":
+                    allerEn("OUEST");
+                    break;
+                case "Q":
+                case "QUITTER":
+                    terminer();
+                    break;
+                case "PARLER":
+                case "P":
+                    parler();
+                    break;
+                case "RECHERCHER":
+                case "R":
+                    rechercher();
+                    break;
+                case "SAC":
+                    SacADos();
+                    break;
+                default:
+                    gui.afficher("Commande inconnue");
+                    break;
+            }
         }
     }
 
@@ -291,6 +308,15 @@ public class Jeu {
             Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
             gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
             joueur.ajouterIndice(i);
+            if(zoneCourante.getPNJ().getNom() == "Indigo")
+            {
+                String nomDesPnj = "";
+                for(PNJ unPnj : lesPnj) { nomDesPnj += unPnj.toString() + ", ";}
+                gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes presente dans ce manoir sont : "+ nomDesPnj);
+                //Afficher les indices que le joueur a déjà trouvé
+                //gui.afficher("\n Et voici vos indices trouvés : ");
+                gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? OUI [arme] [Nom du personnage suspecté] / NON");
+            }
         }
         else gui.afficher("Il n'y a personne dans la pièce.");
     }
