@@ -7,7 +7,7 @@ public class Jeu {
     private GUI gui;
 	private Zone zoneCourante;
 	private Joueur joueur;
-	private static int nombreIndice = 10;
+	private int nombreIndice = 0;
 	private Zone [] lesZones = new Zone[11];
     private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
 
@@ -330,6 +330,7 @@ public class Jeu {
         if(zoneCourante.indice())
         {
             joueur.ajouterIndice(zoneCourante.getIndice());
+            nombreIndice ++;
             gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
             if(zoneCourante.getIndice().getNom() == "Observation du corps") {
