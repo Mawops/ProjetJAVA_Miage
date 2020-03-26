@@ -161,7 +161,7 @@ public class Jeu {
      */
     public void traiterCommande(String commandeLue) {
     	gui.afficher( "> "+ commandeLue + "\n");
-        if(zoneCourante.getPNJ().getNom() == "Indigo" && commandeLue.toUpperCase().matches("OUI [A-Z]* [A-Z]*"))
+        if(commandeLue.toUpperCase().matches("OUI [A-Z]* [A-Z]*"))
         {
             String[] parts = commandeLue.toUpperCase().split(" ");
             String meurtrier = parts[2];
