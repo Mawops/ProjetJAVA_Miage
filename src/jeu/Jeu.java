@@ -60,12 +60,12 @@ public class Jeu {
 
         //Zone [] zones = new Zone [11];
         lesZones[0] = new Zone("le hall", "Couloir.jpg");
-        lesZones[1] = new Zone("la salle Ã  manger", "Escalier.jpg");
+        lesZones[1] = new Zone("la salle à manger", "Escalier.jpg");
         lesZones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg");
         lesZones[3] = new Zone("la cuisine", "SalleAManger.jpg" );
         lesZones[4] = new Zone("la chambre 1", "chambre1.jpg");
-        lesZones[5] = new Zone("la chambre des DuchÃªne", ".png");
-        lesZones[6] = new Zone("la bibliothÃ¨que", ".png");
+        lesZones[5] = new Zone("la chambre des Duchêne", ".png");
+        lesZones[6] = new Zone("la bibliothèque", ".png");
         lesZones[7] = new Zone("la salle de bain", ".png");
         lesZones[8] = new Zone("la buanderie", ".png");
         lesZones[9] = new Zone("la cave", ".png");
@@ -105,11 +105,11 @@ public class Jeu {
         zoneCourante = lesZones[0];
 
         /*ajouter les indices*/
-        lesZones[6].ajouteIndice(new Indices("Lettre d'amour Ã©crite par Agathe pour un homme, autre que son mari Pierre", "TÃ©moignage", lesZones[6]));
-        lesZones[5].ajouteIndice(new Indices("Alliance de Mr DuchÃªne", "Alliance", lesZones[5]));
-        lesZones[3].ajouteIndice(new Indices("Couteau fraÃ®chement nettoyÃ© et dissimulÃ© dans le tiroir parmis les fourchettes", "Arme du crime", lesZones[3]));
-        lesZones[2].ajouteIndice(new Indices("Le corps Ã  trois plaies profondes dans le torse, " +
-                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr DuchÃªne est manquante", "Observation du corps", lesZones[2]));
+        lesZones[6].ajouteIndice(new Indices("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Lettre d'amour", lesZones[6]));
+        lesZones[5].ajouteIndice(new Indices("Alliance de Mr Duchêne", "Alliance", lesZones[5]));
+        lesZones[3].ajouteIndice(new Indices("Couteau fraîchement nettoyé et dissimulé dans le tiroir, parmis les fourchettes", "Arme du crime", lesZones[3]));
+        lesZones[2].ajouteIndice(new Indices("Le corps à trois plaies profondes dans le torse, " +
+                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr Duchêne est manquante", "Observation du corps", lesZones[2]));
 
     }
 
@@ -119,7 +119,7 @@ public class Jeu {
     private void creerPNJ()
     {
         lesPnj.add(new PNJ("Duchêne", "...", true));
-        lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anÃ©antie, nous venons Ã  peine de nous marier... Il Ã©tait proche d'Agathe ces temps-ci j'Ã©tais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
+        lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
         lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin ! Il n'y a pas une minute à perdre!", true));
 
         lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
@@ -319,7 +319,7 @@ public class Jeu {
             else if(zoneCourante.getIndice().getNom() == "Arme du crime")
                 lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit être d'Agathe !");
 
-            else if(zoneCourante.getIndice().getNom() == "Témoignage")
+            else if(zoneCourante.getIndice().getNom() == "Lettre d'amour")
             {
                 lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre. Certes il n'etait pas tellement mon ami...  ");
                 gui.afficher("Vous remarquez qu'il manque quelque chose sur sa chemise...");
