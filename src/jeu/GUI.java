@@ -1,8 +1,9 @@
 package jeu;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.URL;
+        import javax.swing.*;
+        import javax.swing.border.EmptyBorder;
+        import java.awt.*;
+        import java.awt.event.*;
+        import java.net.URL;
 
 public class GUI implements ActionListener
 {
@@ -16,22 +17,20 @@ public class GUI implements ActionListener
 
     public GUI(Jeu j) {
         jeu = j;
-	finJeu = false;
+        finJeu = false;
         fenetre = new JFrame("Jeu");
-	 int delais=1000;
+        //JPanel panel = new JPanel();
         creerGUI();
-    }
 
-    public void afficher(String s) {
-        texte.append(s);
-        texte.setCaretPosition(texte.getDocument().getLength());
-    }
+        // Le Chrono
+        /* Le timer */
+        int delais=1000;
 
-      /* création des composants */
+        /* création des composants */
         final JLabel Label1 = new JLabel(heure+":"+minute+":"+seconde); /* déclarer final car une classe interne va acceder à ce composant */
         final JButton debut = new JButton("Start");
         JButton fin = new JButton("Remise à zéro");
-       // JFrame fenetre = new JFrame("Chronomètre");
+        // JFrame fenetre = new JFrame("Chronomètre");
         JPanel Panel1 = new JPanel();
 
         /* Action réalisé par le timer */
@@ -54,11 +53,10 @@ public class GUI implements ActionListener
                 } else Label1.setText(heure + ":" + minute + ":" + seconde);/* rafraichir le label */
             }
         };
-
-        /* instanciation du timer
+        /* instanciation du timer */
         final Timer timer1= new Timer(delais,tache_timer);
 
-        /* Ajout des composants aux conteneurs avec formatage
+        /* Ajout des composants aux conteneurs avec formatage */
         Panel1.add(debut);
         Panel1.add(fin);
         Label1.setBorder(new EmptyBorder(10,135,10,10));
@@ -66,7 +64,7 @@ public class GUI implements ActionListener
         fenetre.getContentPane().add(Panel1,"South");
 
         /* Action provoqué par l'utilisateur */
-        /* Lors du clic sur le bouton debut
+        /* Lors du clic sur le bouton debut */
         debut.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -85,8 +83,7 @@ public class GUI implements ActionListener
                 }
             }
         });
-
-        /* Lors du clic sur le bouton fin
+        /* Lors du clic sur le bouton fin */
         fin.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -104,26 +101,33 @@ public class GUI implements ActionListener
             }
         });
 
-        /* Afficher l'ihm
+        /* Afficher l'ihm */
         fenetre.pack();
         //fenetre.setLocation(350,200);  /* Déplacer la fenetre à ce nouvel emplacement */
         //fenetre.setSize(300,100);   /* dimension de la fenetre */
         //fenetre.show();
+    }
 
 
 
-    
+
+
+    public void afficher(String s) {
+        texte.append(s);
+        texte.setCaretPosition(texte.getDocument().getLength());
+    }
+
     public void afficher() {
         afficher("\n");
     }
 
-   public void afficheImage( String nomImage) {
-	   	URL imageURL = this.getClass().getClassLoader().getResource("jeu/images/" + nomImage);
-	   	if( imageURL != null ) {
-        	image.setIcon( new ImageIcon( imageURL ));
+    public void afficheImage( String nomImage) {
+        URL imageURL = this.getClass().getClassLoader().getResource("jeu/images/" + nomImage);
+        if( imageURL != null ) {
+            image.setIcon( new ImageIcon( imageURL ));
             fenetre.pack();
         }
-   }
+    }
 
     public void enable(boolean ok) {
         entree.setEditable(ok);
@@ -132,8 +136,8 @@ public class GUI implements ActionListener
     }
 
     private void creerGUI() {
-        fenetre = new JFrame("Jeu");
-        
+        //    fenetre = new JFrame("Jeu");
+
         entree = new JTextField(34);
 
         texte = new JTextArea();
@@ -151,7 +155,7 @@ public class GUI implements ActionListener
         panel.add(entree, BorderLayout.SOUTH);
 
         fenetre.getContentPane().add(panel, BorderLayout.CENTER);
-        
+
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         entree.addActionListener(this);
@@ -168,9 +172,8 @@ public class GUI implements ActionListener
     private void executerCommande() {
         String commandeLue = entree.getText();
         entree.setText("");
-        jeu.traiterCommande(commandeLue);
+        jeu.traiterCommande( commandeLue);
     }
-
     private void executeCommande()
     {
         afficher("Quel est le tueur ? ");
