@@ -110,8 +110,6 @@ public class GUI implements ActionListener
 
 
 
-
-
     public void afficher(String s) {
         texte.append(s);
         texte.setCaretPosition(texte.getDocument().getLength());
