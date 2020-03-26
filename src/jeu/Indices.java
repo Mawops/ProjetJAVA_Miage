@@ -17,7 +17,7 @@ public class Indices {
     public Indices(String pDescription, String pNom, Zone pLocalisation)
     {
         this.description = pDescription;
-        if(pNom == "temoignage")
+        if(pNom == "Témoignage")
         {
             this.nom = pNom + increment;
             increment ++;

@@ -4,7 +4,5 @@ public class Main {
 		Jeu jeu = new Jeu();
 		GUI gui = new GUI( jeu);
 		jeu.setGUI( gui);
-		Chrono timerjeu= new Chrono();
-
 	}
 }
