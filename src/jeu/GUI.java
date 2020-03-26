@@ -26,6 +26,7 @@ public class GUI implements ActionListener
         texte.append(s);
         texte.setCaretPosition(texte.getDocument().getLength());
     }
+
       /* création des composants */
         final JLabel Label1 = new JLabel(heure+":"+minute+":"+seconde); /* déclarer final car une classe interne va acceder à ce composant */
         final JButton debut = new JButton("Start");
@@ -53,6 +54,7 @@ public class GUI implements ActionListener
                 } else Label1.setText(heure + ":" + minute + ":" + seconde);/* rafraichir le label */
             }
         };
+
         /* instanciation du timer */
         final Timer timer1= new Timer(delais,tache_timer);
 
@@ -83,6 +85,7 @@ public class GUI implements ActionListener
                 }
             }
         });
+
         /* Lors du clic sur le bouton fin */
         fin.addActionListener(new ActionListener()
         {

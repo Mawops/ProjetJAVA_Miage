@@ -2,6 +2,7 @@ package jeu;
 
 public class Indices {
 
+    //Initilisations des variables
     private String description;
     private Zone localisation;
     private String nom;
