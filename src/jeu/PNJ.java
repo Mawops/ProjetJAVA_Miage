@@ -60,11 +60,11 @@ public class PNJ extends Personnage{
     public String toString() {
         if(this.sexe == true)
         {
-            return "M." + this.getNom();
+            return "M. " + this.getNom();
         }
         else
         {
-            return "Mme." + this.getNom();
+            return "Mme. " + this.getNom();
         }
     }
 
