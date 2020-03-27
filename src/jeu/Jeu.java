@@ -159,7 +159,7 @@ public class Jeu {
      *
      * @param commandeLue
      */
-    public void traiterCommande(String commandeLue) {
+    public void traiterCommande(String commandeLue) throws Exception {
     	gui.afficher( "> "+ commandeLue + "\n");
         if(commandeLue.toUpperCase().matches("OUI [A-Z]* [A-Z]*"))
         {
@@ -297,8 +297,7 @@ public class Jeu {
      * vérifie s'il y a une PNJ dans la pièce
      * si oui, le joueur récupère sont témoignage
      */
-    private void parler()
-    {
+    private void parler() throws Exception {
         if(zoneCourante.PNJ())
         {
             Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);

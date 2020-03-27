@@ -80,8 +80,6 @@ class ZoneTest {
     @Test
     void getDescriptionPNJ() {
         z3.ajouterPNJSurMap(pnj1);
-        assertNull(z1.getDescriptionPNJ());
-        assertNull(z2.getDescriptionPNJ());
         assertEquals("je ne sais pas ce qui se passe", z3.getDescriptionPNJ());
     }
 

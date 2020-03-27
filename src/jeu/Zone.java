@@ -89,7 +89,7 @@ public class Zone
      */
     public String getDescriptionPNJ()
     {
-        return this.personnagePNJ.getTemoignage();
+            return this.personnagePNJ.getTemoignage();
     }
 
     /**

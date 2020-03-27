@@ -164,10 +164,14 @@ public class GUI implements ActionListener
     }
 
     public void actionPerformed(ActionEvent e) {
-        executerCommande();
+        try {
+            executerCommande();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    private void executerCommande() {
+    private void executerCommande() throws Exception {
         String commandeLue = entree.getText();
         entree.setText("");
         jeu.traiterCommande( commandeLue);
