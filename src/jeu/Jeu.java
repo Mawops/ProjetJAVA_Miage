@@ -161,14 +161,6 @@ public class Jeu {
      */
     public void traiterCommande(String commandeLue) throws Exception {
     	gui.afficher( "> "+ commandeLue + "\n");
-        if(commandeLue.toUpperCase().matches("OUI [A-Z]* [A-Z]*"))
-        {
-            String[] parts = commandeLue.toUpperCase().split(" ");
-            String meurtrier = parts[2];
-            String arme = parts[1];
-            resoudreEnquete(meurtrier, arme);
-        }
-        else {
             switch (commandeLue.toUpperCase()) {
                 case "?":
                 case "AIDE":
@@ -206,11 +198,17 @@ public class Jeu {
                     SacADos();
                     break;
                 default:
-                    gui.afficher("Commande inconnue");
+                    if(commandeLue.toUpperCase().matches("ACCUSER [A-Z]* [A-Z]*"))
+                    {
+                        String[] parts = commandeLue.toUpperCase().split(" ");
+                        String meurtrier = parts[2];
+                        String arme = parts[1];
+                        resoudreEnquete(meurtrier, arme);
+                    }
+                    else { gui.afficher("Commande inconnue");}
                     break;
             }
         }
-    }
 
     /**
      * affiche toutes les commandes possible
