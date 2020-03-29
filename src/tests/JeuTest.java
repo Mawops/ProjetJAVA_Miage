@@ -27,11 +27,11 @@ class JeuTest {
     @Test
     void traiterCommande() {
         String cmd1 = "Oui";
-        String cmd2 = "OUI COUTEAU INDIGO";
-        String cmd3 = "OUI COUTEAU INDIGO OK OK";
-        assertFalse(cmd1.matches("OUI [A-Z]* [A-Z]*"));
-        assertTrue(cmd2.matches("OUI [A-Z]* [A-Z]*"));
-        assertFalse(cmd1.matches("OUI [A-Z]* [A-Z]*"));
+        String cmd2 = "ACCUSER COUTEAU INDIGO";
+        String cmd3 = "ACCUSER COUTEAU INDIGO OK OK";
+        assertFalse(cmd1.matches("ACCUSER [A-Z]* [A-Z]*"));
+        assertTrue(cmd2.matches("ACCUSER [A-Z]* [A-Z]*"));
+        assertFalse(cmd1.matches("ACCUSER [A-Z]* [A-Z]*"));
     }
 
     @Test

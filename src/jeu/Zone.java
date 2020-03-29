@@ -51,6 +51,15 @@ public class Zone
     }
 
     /**
+     * Modifie le lien de l'image d'une pièce
+     * @param pNomImage
+     */
+    public void setNomImage(String pNomImage)
+    {
+        this.nomImage = pNomImage;
+    }
+
+    /**
      * retoune la description de la salle
      * @return description
      */

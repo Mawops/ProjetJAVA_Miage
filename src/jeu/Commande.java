@@ -11,7 +11,8 @@ public enum Commande {
 	QUITTER("Q", "Q (quitter)"),
 	PARLER("P", "P (Parler)"),
 	RECHERCHER("R", "R (Rechercher)"),
-	SAC("S", "S (Sac");
+	SAC("S", "S (Sac"),
+	ACCUSER("ACCUSER [A-Z]* [A-Z]*", "ACCUSER (Vous devez écrire ACCUSER et le meurtrier et l'arme dans ce sens : MEURTRIER ARME");
 
 	private String abreviation;
 	private String description;
