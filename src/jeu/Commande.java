@@ -4,15 +4,15 @@ import java.util.List;
 
 public enum Commande {
 	NORD("N", "N (aller à la sortie nord)"),
-	SUD("S", "S (aller à la sortie sud)"),
-	EST("E", "E (aller à la sortie est)"),
-	OUEST("O", "O (aller à la sortie ouest)"),
-	AIDE("?", "? (aide)"),
-	QUITTER("Q", "Q (quitter)"),
-	PARLER("P", "P (Parler)"),
-	RECHERCHER("R", "R (Rechercher)"),
-	SAC("S", "S (Sac"),
-	ACCUSER("ACCUSER [A-Z]* [A-Z]*", "ACCUSER (Vous devez écrire ACCUSER et le meurtrier et l'arme dans ce sens : MEURTRIER ARME");
+	SUD("S", "\nS (aller à la sortie sud)"),
+	EST("E", "\nE (aller à la sortie est)"),
+	OUEST("O", "\nO (aller à la sortie ouest)"),
+	AIDE("?", "\n? (aide)"),
+	QUITTER("Q", "\nQ (quitter)"),
+	PARLER("P", "\nP (Parler)"),
+	RECHERCHER("R", "\nR (Rechercher)"),
+	SAC("S", "\nS (Sac)"),
+	ACCUSER("ACCUSER [A-Z]* [A-Z]*", "\nACCUSER (Vous devez écrire ACCUSER et le meurtrier et l'arme dans ce sens : MEURTRIER ARME");
 
 	private String abreviation;
 	private String description;

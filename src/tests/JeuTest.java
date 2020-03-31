@@ -41,6 +41,6 @@ class JeuTest {
 
     @Test
     void sacADos() {
-        //assertEquals("Il n'y a pas d'indice dans le sac à dos", SacADos());
+
     }
 }

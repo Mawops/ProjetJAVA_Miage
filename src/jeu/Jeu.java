@@ -216,7 +216,7 @@ public class Jeu {
     private void afficherAide() {
         gui.afficher("Etes-vous perdu ?");
         gui.afficher();
-        gui.afficher("Les commandes autorisÃ©es sont :");
+        gui.afficher("Les commandes autorisées sont :");
         gui.afficher();
         gui.afficher(Commande.toutesLesDescriptions().toString());
         gui.afficher();
