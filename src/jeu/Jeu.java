@@ -69,7 +69,7 @@ public class Jeu {
         lesZones[7] = new Zone("la salle de bain", "salleDeBain.jpg");
         lesZones[8] = new Zone("la buanderie", "buanderie.jpg");
         lesZones[9] = new Zone("la cave", "caveSansPierre.jpg");
-        lesZones[10] = new Zone("le couloir", ".jpg");
+        lesZones[10] = new Zone("le couloir", "couloir.jpg");
 
         /*rez de chaussée */
         lesZones[0].ajouteSortie(Sortie.OUEST, lesZones[1]);
@@ -309,7 +309,7 @@ public class Jeu {
                 //Afficher les indices que le joueur a déjà trouvé
                 //gui.afficher("\n Et voici vos indices trouvés : ");
                 if(verifierIndice())
-                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [arme] [Nom du personnage suspecté] / NON");
+                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
             }
         }
         else gui.afficher("Il n'y a personne dans la pièce.");
