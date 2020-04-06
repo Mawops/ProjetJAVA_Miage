@@ -55,5 +55,6 @@ public class Indices {
     {
         return this.nom;
     }
+     public static void setIncrement(int n) { increment+=n ;}
 
 }
