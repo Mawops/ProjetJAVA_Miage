@@ -6,7 +6,8 @@ public class Indices {
     private String description;
     private Zone localisation;
     private String nom;
-    private static int increment = 1;
+    private static int incrementTemoignage = 1;
+    private static int increment = 0;
 
     /**
      *Constructeur
@@ -16,11 +17,12 @@ public class Indices {
      */
     public Indices(String pDescription, String pNom, Zone pLocalisation)
     {
+        increment ++;
         this.description = pDescription;
         if(pNom == "Témoignage")
         {
             this.nom = pNom + increment;
-            increment ++;
+            incrementTemoignage ++;
         }
         else
         {
@@ -55,6 +57,9 @@ public class Indices {
     {
         return this.nom;
     }
-     public static void setIncrement(int n) { increment+=n ;}
+
+    public static void setIncrement(int n) { increment+=n ;}
+
+    public static int getIncrement() {return increment;}
 
 }

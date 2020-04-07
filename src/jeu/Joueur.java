@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Joueur extends Personnage {
 
-    private ArrayList<Indice> listeIndice;
+    private ArrayList<Indices> listeIndice;
 
     /**
      *Constructeur
@@ -14,7 +14,7 @@ public class Joueur extends Personnage {
     public Joueur(String pNom)
     {
         super(pNom);
-        listeIndice = new ArrayList<Indice>();
+        listeIndice = new ArrayList<Indices>();
     }
 
     /**
@@ -25,7 +25,7 @@ public class Joueur extends Personnage {
     public boolean trouverIndice(String nom)
     {
         boolean trouve = false;
-        for(Indice i : listeIndice)
+        for(Indices i : listeIndice)
         {
             if(i.getNom() == nom)
             {
@@ -44,7 +44,7 @@ public class Joueur extends Personnage {
     public boolean trouveDescription(String nom)
     {
         boolean trouve = false;
-        for(Indice i : listeIndice)
+        for(Indices i : listeIndice)
         {
             if(i.getDescription() == nom)
             {
@@ -58,7 +58,7 @@ public class Joueur extends Personnage {
      * ajoute un nouvel indice dans la liste
      * @param i : indice à ajouter
      */
-    public void ajouterIndice(Indice i)
+    public void ajouterIndice(Indices i)
     {
         listeIndice.add(i);
     }
@@ -76,7 +76,7 @@ public class Joueur extends Personnage {
      * retourne la liste d'indice
      * @return
      */
-    public ArrayList<Indice> getIndice()
+    public ArrayList<Indices> getIndice()
     {
         return listeIndice;
     }

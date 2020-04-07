@@ -8,13 +8,16 @@ public class Jeu {
     private Zone zoneCourante;
     private Joueur joueur;
     private int nombreIndice = 15;
-    private Zone [] lesZones = new Zone[11];
-    private ArrayList<PNJ> lesPnj = new ArrayList<PNJ>();
+    private Zone [] lesZones;
+    private ArrayList<PNJ> lesPnj;
 
     /**
      * Constructeur du jeu
      */
     public Jeu() {
+        lesZones = new Zone[11];
+        lesPnj = new ArrayList<PNJ>();
+
         creerCarte();
         creerJoueur("Camarade");
         creerPNJ();
@@ -105,10 +108,10 @@ public class Jeu {
         zoneCourante = lesZones[0];
 
         /*ajouter les indices*/
-        lesZones[6].ajouteIndice(new Indice("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Lettre d'amour", lesZones[6]));
-        lesZones[5].ajouteIndice(new Indice("Alliance de Mr Duchêne", "Alliance", lesZones[5]));
-        lesZones[3].ajouteIndice(new Indice("Couteau fraîchement nettoyé et dissimulé dans le tiroir, parmis les fourchettes", "Arme du crime", lesZones[3]));
-        lesZones[2].ajouteIndice(new Indice("Le corps à trois plaies profondes dans le torse, " +
+        lesZones[6].ajouteIndice(new Indices("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Lettre d'amour", lesZones[6]));
+        lesZones[5].ajouteIndice(new Indices("Alliance de Mr Duchêne", "Alliance", lesZones[5]));
+        lesZones[3].ajouteIndice(new Indices("Couteau fraîchement nettoyé et dissimulé dans le tiroir, parmis les fourchettes", "Arme du crime", lesZones[3]));
+        lesZones[2].ajouteIndice(new Indices("Le corps à trois plaies profondes dans le torse, " +
                 "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr Duchêne est manquante", "Observation du corps", lesZones[2]));
 
     }
@@ -246,7 +249,7 @@ public class Jeu {
      */
     private boolean verifierIndice()
     {
-        return joueur.getNbIndice() == nombreIndice;
+        return joueur.getNbIndice() == jeu.Indices.getIncrement();
     }
 
     /**
@@ -296,35 +299,36 @@ public class Jeu {
      * si oui, le joueur récupère son témoignage
      */
     private void parler() throws Exception {
-        if(zoneCourante.PNJ())
-        {
-            Indice i = new Indice(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
+        if (zoneCourante.PNJ()) {
+            Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
             gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
-            //gui.afficher("\n indice anthony: "+ i.getDescription());
-            if (!joueur.trouveDescription(i.getDescription())) {
-                //gui.afficher("\n ok : "+ i.getDescription());
+            if(joueur.trouveDescription(i.getDescription())) {
                 joueur.ajouterIndice(i);
-
-
-
+            } else {
+                Indices.setIncrement(-1);
             }
-            else Indice.setIncrement(-1);
 
+            if (zoneCourante.getPNJ().getNom() == "Indigo") {
+                String nomDesPnj = "";
+                for (PNJ unPnj : lesPnj) {
+                    nomDesPnj += unPnj.toString() + ",\n";
+                }
+                gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes présente dans ce manoir sont : \n" + nomDesPnj);
+                if (verifierIndice())
+                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
 
+                joueur.ajouterIndice(i);
                 if (zoneCourante.getPNJ().getNom() == "Indigo") {
-                    String nomDesPnj = "";
+                    nomDesPnj = "";
                     for (PNJ unPnj : lesPnj) {
                         nomDesPnj += unPnj.toString() + ",\n";
                     }
-                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes présente dans ce manoir sont : \n" + nomDesPnj);
-                    //Afficher les indices que le joueur a déjà trouvé
-                    //gui.afficher("\n Et voici vos indices trouvés : ");
+                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes pr�sente dans ce manoir sont : \n" + nomDesPnj);
                     if (verifierIndice())
                         gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
-
-            }
+                }
+            } else gui.afficher("Il n'y a personne dans la pièce.");
         }
-        else gui.afficher("Il n'y a personne dans la pièce.");
     }
 
     /**
@@ -340,10 +344,10 @@ public class Jeu {
                 gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
                 if (zoneCourante.getIndice().getNom() == "Observation du corps") {
-                    zoneCourante.ajouteIndice(new Indice("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
+                    zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre, cette dernière s'est brisée", "Bouts de verre", zoneCourante));
 
                 } else if (zoneCourante.getIndice().getNom() == "Bouts de verre") {
-                    zoneCourante.ajouteIndice(new Indice("Vous avez trouvé un bouton de chemise sous la table de billard. \n" +
+                    zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard. \n" +
                             "Ce bouton ressemble comme deux gouttes d'eau à celui de Pierre. \nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
                     lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bizarre ..");
                 } else if (zoneCourante.getIndice().getNom() == "Arme du crime")
@@ -374,7 +378,7 @@ public class Jeu {
         String sac = "";
         if(joueur.getNbIndice() > 0)
         {
-            for(Indice i : joueur.getIndice())
+            for(Indices i : joueur.getIndice())
             {
                 sac += i.getNom() + " : " + i.getDescription() + "\n";
             }
