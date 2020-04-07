@@ -7,7 +7,7 @@ public class Jeu {
     private GUI gui;
     private Zone zoneCourante;
     private Joueur joueur;
-    private int nombreIndice = 15;
+    private int nombreIndice = 14;
     private Zone [] lesZones;
     private ArrayList<PNJ> lesPnj;
 
@@ -51,7 +51,7 @@ public class Jeu {
         lesZones[2].ajouterPNJSurMap(lesPnj.get(0));
         lesZones[4].ajouterPNJSurMap(lesPnj.get(5));
         lesZones[8].ajouterPNJSurMap(lesPnj.get(4));
-        //Pierre n'apparaÃ®t pas tant qu'on a pas trouvÃ© la lettre d'Agathe
+        //Pierre n'apparaît pas tant qu'on a pas trouvé la lettre d'Agathe
     }
 
     /**
@@ -249,7 +249,7 @@ public class Jeu {
      */
     private boolean verifierIndice()
     {
-        return joueur.getNbIndice() == jeu.Indices.getIncrement();
+        return joueur.getNbIndice() == nombreIndice;
     }
 
     /**
@@ -339,39 +339,40 @@ public class Jeu {
     {
         if(zoneCourante.indice())
         {
-            if(!joueur.trouverIndice(zoneCourante.getIndice().getNom())) {
+            if(!joueur.trouverIndice(zoneCourante.getIndice().getNom()))
+            {
                 joueur.ajouterIndice(zoneCourante.getIndice());
-                gui.afficher("Vous venez de rÃ©cupÃ©rer un indice : " + zoneCourante.getIndice().getDescription());
+                gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
                 if (zoneCourante.getIndice().getNom() == "Observation du corps") {
-                    zoneCourante.ajouteIndice(new Indices("Pierre a lancÃ© une boule de billard sur la fenÃªtre, cette derniÃ¨re s'est brisÃ©e", "Bouts de verre", zoneCourante));
+                    zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre,\ncette dernière s'est brisée", "Bouts de verre", zoneCourante));
 
                 } else if (zoneCourante.getIndice().getNom() == "Bouts de verre") {
-                    zoneCourante.ajouteIndice(new Indices("Vous avez trouvÃ© un bouton de chemise sous la table de billard. \n" +
-                            "Ce bouton ressemble comme deux gouttes d'eau Ã  celui de Pierre. \nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
+                    zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard.\n" +
+                            "Ce bouton ressemble comme deux gouttes d'eau Ã  celui de Pierre.\nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
                     lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bizarre ..");
                 } else if (zoneCourante.getIndice().getNom() == "Arme du crime")
-                    lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit Ãªtre d'Agathe !");
+                    lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit être d'Agathe !");
 
                 else if (zoneCourante.getIndice().getNom() == "Lettre d'amour") {
-                    lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre. Certes il n'Ã©tait pas tellement mon ami...  ");
+                    lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre.\nCertes il n'était pas vraiment mon ami...");
                     gui.afficher("Vous remarquez qu'il manque quelque chose sur sa chemise...");
                 } else if (zoneCourante.getIndice().getNom() == "Alliance")
-                    gui.afficher(" Mme DuchÃªne est suspecte");
+                    gui.afficher(" Mme Duchêne est suspecte");
                 else if (zoneCourante.getIndice().getNom() == "Bouton de chemise") {
                     lesZones[9].ajouterPNJSurMap(lesPnj.get(3));
                     lesZones[9].setNomImage("caveAvecPierre.jpg");
                     zoneCourante.indiceRecupere();
                 } else zoneCourante.indiceRecupere();
             }
-            else gui.afficher("Vous avez dÃ©jÃ  rÃ©cupÃ©rÃ© les indices de la piÃ¨ce");
+            else gui.afficher("Vous avez déjà  récupéré les indices de la pièce");
         }
-        else gui.afficher("Il n'y a pas d'indice dans la piÃ¨ce");
+        else gui.afficher("Il n'y a pas d'indice dans la pièce");
         gui.afficher();
     }
 
     /**
-     * permet d'afficher tous les indices que le joueur a ramassÃ©
+     * permet d'afficher tous les indices que le joueur a ramassé
      */
     public void SacADos()
     {

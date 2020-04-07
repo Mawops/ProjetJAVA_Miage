@@ -34,13 +34,4 @@ class JeuTest {
         assertFalse(cmd1.matches("ACCUSER [A-Z]* [A-Z]*"));
     }
 
-    @Test
-    void resoudreEnquete() {
-
-    }
-
-    @Test
-    void sacADos() {
-
-    }
 }

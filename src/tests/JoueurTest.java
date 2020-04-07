@@ -50,6 +50,6 @@ class JoueurTest {
 
     @Test
     void getIndice() {
-        assertEquals(i2 = new ArrayList<>(), j1.getIndice());
+        assertEquals(i2 = new ArrayList<Indices>(), j1.getIndice());
     }
 }
