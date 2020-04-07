@@ -264,7 +264,7 @@ public class Jeu {
 
         if(verifierIndice())
         {
-            while(nbChance <= 3 && !trouve)
+            if(nbChance <= 3 && !trouve)
             {
                 if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
                 {
@@ -280,7 +280,7 @@ public class Jeu {
                     nbChance ++;
                 }
             }
-            if(!trouve)
+            if(nbChance >3 && !trouve)
             {
                 gui.afficher("Vous n'avez pas rÃ©ussi Ã  rÃ©soudre l'enquÃªte, malgrÃ© vos trois chances... Dommage");
                 gui.afficher();
