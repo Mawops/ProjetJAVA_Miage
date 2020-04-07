@@ -7,7 +7,7 @@ public class Jeu {
     private GUI gui;
     private Zone zoneCourante;
     private Joueur joueur;
-    private int nombreIndice = 14;
+    private int nombreIndice = 6;
     private Zone [] lesZones;
     private ArrayList<PNJ> lesPnj;
 
@@ -249,7 +249,7 @@ public class Jeu {
      */
     private boolean verifierIndice()
     {
-        return joueur.getNbIndice() == nombreIndice;
+        return joueur.getNbIndice() >= nombreIndice;
     }
 
     /**
