@@ -33,7 +33,7 @@ public class Jeu {
     public void setGUI( GUI g) { gui = g; afficherMessageDeBienvenue(); }
 
     /**
-     *création du joueur
+     *crÃ©ation du joueur
      * @param lireNom : nom du joueur
      */
     private void creerJoueur(String lireNom)
@@ -51,30 +51,30 @@ public class Jeu {
         lesZones[2].ajouterPNJSurMap(lesPnj.get(0));
         lesZones[4].ajouterPNJSurMap(lesPnj.get(5));
         lesZones[8].ajouterPNJSurMap(lesPnj.get(4));
-        //Pierre n'appara�t pas tant qu'on a pas trouv� la lettre d'Agathe
+        //Pierre n'apparaît pas tant qu'on a pas trouvé la lettre d'Agathe
     }
 
     /**
-     * création de la carte :
-     * création des différentes zones
-     * création des liens entre les zones
+     * crÃ©ation de la carte :
+     * crÃ©ation des diffÃ©rentes zones
+     * crÃ©ation des liens entre les zones
      */
     private void creerCarte() {
 
         //Zone [] zones = new Zone [11];
         lesZones[0] = new Zone("le hall", "hall.jpg");
-        lesZones[1] = new Zone("la salle à manger", "salleAManger.jpg");
+        lesZones[1] = new Zone("la salle Ã  manger", "salleAManger.jpg");
         lesZones[2] = new Zone("la salle de jeux", "SalleDeJeu.jpg");
         lesZones[3] = new Zone("la cuisine", "cuisine.jpg" );
         lesZones[4] = new Zone("la chambre 1", "chambre1.jpg");
-        lesZones[5] = new Zone("la chambre des Duchêne", "chambre2.jpg");
-        lesZones[6] = new Zone("la bibliothèque", "bibliotheque.jpg");
+        lesZones[5] = new Zone("la chambre des DuchÃªne", "chambre2.jpg");
+        lesZones[6] = new Zone("la bibliothÃ¨que", "bibliotheque.jpg");
         lesZones[7] = new Zone("la salle de bain", "salleDeBain.jpg");
         lesZones[8] = new Zone("la buanderie", "buanderie.jpg");
         lesZones[9] = new Zone("la cave", "caveSansPierre.jpg");
         lesZones[10] = new Zone("le couloir", "couloir.jpg");
 
-        /*rez de chaussée */
+        /*rez de chaussÃ©e */
         lesZones[0].ajouteSortie(Sortie.OUEST, lesZones[1]);
         lesZones[0].ajouteSortie(Sortie.NORD, lesZones[3]);
         lesZones[0].ajouteSortie(Sortie.EST, lesZones[2]);
@@ -85,7 +85,7 @@ public class Jeu {
         lesZones[2].ajouteSortie(Sortie.OUEST, lesZones[0]);
         lesZones[3].ajouteSortie(Sortie.SUD, lesZones[0]);
 
-        /*Premier étage */
+        /*Premier Ã©tage */
         lesZones[6].ajouteSortie(Sortie.NORD, lesZones[1]);
         lesZones[6].ajouteSortie(Sortie.SUD, lesZones[10]);
 
@@ -108,28 +108,28 @@ public class Jeu {
         zoneCourante = lesZones[0];
 
         /*ajouter les indices*/
-        lesZones[6].ajouteIndice(new Indices("Lettre d'amour écrite par Agathe pour un homme, autre que son mari Pierre", "Lettre d'amour", lesZones[6]));
-        lesZones[5].ajouteIndice(new Indices("Alliance de Mr Duchêne", "Alliance", lesZones[5]));
-        lesZones[3].ajouteIndice(new Indices("Couteau fraîchement nettoyé et dissimulé dans le tiroir, parmis les fourchettes", "Arme du crime", lesZones[3]));
-        lesZones[2].ajouteIndice(new Indices("Le corps à trois plaies profondes dans le torse, " +
-                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr Duchêne est manquante", "Observation du corps", lesZones[2]));
+        lesZones[6].ajouteIndice(new Indices("Lettre d'amour Ã©crite par Agathe pour un homme, autre que son mari Pierre", "Lettre d'amour", lesZones[6]));
+        lesZones[5].ajouteIndice(new Indices("Alliance de Mr DuchÃªne", "Alliance", lesZones[5]));
+        lesZones[3].ajouteIndice(new Indices("Couteau fraÃ®chement nettoyÃ© et dissimulÃ© dans le tiroir, parmis les fourchettes", "Arme du crime", lesZones[3]));
+        lesZones[2].ajouteIndice(new Indices("Le corps Ã  trois plaies profondes dans le torse, " +
+                "dont deux dans le ventre et une dans la poitrine. De plus l'alliance de Mr DuchÃªne est manquante", "Observation du corps", lesZones[2]));
 
     }
 
     /**
-     * création de tous les PNJ pour le fonctionnement du jeu
+     * crÃ©ation de tous les PNJ pour le fonctionnement du jeu
      */
     private void creerPNJ()
     {
-        lesPnj.add(new PNJ("Duchêne", "...", true));
-        lesPnj.add(new PNJ("Duchêne", "Mon pauvre mari... Je.. Je suis anéantie, nous venons à peine de nous marier... Il était proche d'Agathe ces temps-ci j'étais si heureuse que nos amis s'entendent bien... L'assassin est forcément dans cette maison! TROUVEZ-LE VITE!", false));
-        lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcément pas loin ! Il n'y a pas une minute à perdre!", true));
+        lesPnj.add(new PNJ("DuchÃªne", "...", true));
+        lesPnj.add(new PNJ("DuchÃªne", "Mon pauvre mari... Je.. Je suis anÃ©antie, nous venons Ã  peine de nous marier... Il Ã©tait proche d'Agathe ces temps-ci j'Ã©tais si heureuse que nos amis s'entendent bien... L'assassin est forcÃ©ment dans cette maison! TROUVEZ-LE VITE!", false));
+        lesPnj.add(new PNJ("Indigo", "Le meurtrier n'est forcÃ©ment pas loin ! Il n'y a pas une minute Ã  perdre!", true));
 
-        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection pour M.Duchêne, mais c'était un très bon ami d'Agathe.", true));
-        //Pour Pierre il faut que lorsqu'on le questionne sur son bouton de chemise, son témoignage change et qu'il devienne hésitant
+        lesPnj.add(new PNJ("Pierre", "Quelle terrible nouvelle. Je ne portais pas tant d'affection pour M.DuchÃªne, mais c'Ã©tait un trÃ¨s bon ami d'Agathe.", true));
+        //Pour Pierre il faut que lorsqu'on le questionne sur son bouton de chemise, son tÃ©moignage change et qu'il devienne hÃ©sitant
 
-        lesPnj.add(new PNJ("Père Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis monté chercher des affaires dans la salle de jeu et c'est là  que j'ai découvert le corps sans vie.", true));
-        lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurait pu en vouloir à ce pauvre M.Duchêne, il était si gentil, beau, intelligent.. euh.. Bref dépêchez-vous de trouver le meurtrier!", false));
+        lesPnj.add(new PNJ("PÃ¨re Kent", "M'sieur, depuis ce midi je suis dans le jardin, regardez mon accoutrement, il est plein de boue! Je suis montÃ© chercher des affaires dans la salle de jeu et c'est lÃ Â  que j'ai dÃ©couvert le corps sans vie.", true));
+        lesPnj.add(new PNJ("Agathe", "OH MON DIEU! Qui aurait pu en vouloir Ã  ce pauvre M.DuchÃªne, il Ã©tait si gentil, beau, intelligent.. euh.. Bref dÃ©pÃªchez-vous de trouver le meurtrier!", false));
     }
 
     /**
@@ -141,18 +141,18 @@ public class Jeu {
     }
 
     /**
-     * message affiché lors du lancement du jeu
+     * message affichÃ© lors du lancement du jeu
      */
     private void afficherMessageDeBienvenue() {
         gui.afficher("Bienvenue " + joueur.getNom() + " !");
         gui.afficher();
         gui.afficher("Tapez '?' pour obtenir de l'aide.");
         gui.afficher();
-        gui.afficher("Il y a eu un meurtre dans le manoir de Mr et Mme Duchêne, et tu vas m'aider à le résoudre !");
+        gui.afficher("Il y a eu un meurtre dans le manoir de Mr et Mme DuchÃªne, et tu vas m'aider Ã  le rÃ©soudre !");
         gui.afficher();
-        gui.afficher("Allons récupérer les clé du manoir au concierge.");
+        gui.afficher("Allons rÃ©cupÃ©rer les clÃ© du manoir au concierge.");
         gui.afficher();
-        gui.afficher("Ensuite aller à la salle de jeu (à l'est) pour examiner le corps du cadavre");
+        gui.afficher("Ensuite aller Ã  la salle de jeu (Ã  l'est) pour examiner le corps du cadavre");
         gui.afficher();
         afficherLocalisation();
         gui.afficheImage(zoneCourante.nomImage());
@@ -219,7 +219,7 @@ public class Jeu {
     private void afficherAide() {
         gui.afficher("Etes-vous perdu ?");
         gui.afficher();
-        gui.afficher("Les commandes autorisées sont :");
+        gui.afficher("Les commandes autorisÃ©es sont :");
         gui.afficher();
         gui.afficher(Commande.toutesLesDescriptions().toString());
         gui.afficher();
@@ -227,7 +227,7 @@ public class Jeu {
 
     /**
      * permet de changer l'emplacement du joueur, si cela est possible
-     * @param direction correspond à la direction que le joueur veut prendre
+     * @param direction correspond Ã  la direction que le joueur veut prendre
      */
     private void allerEn(String direction) {
         Zone nouvelle = zoneCourante.obtientSortie( direction);
@@ -244,7 +244,7 @@ public class Jeu {
     }
 
     /**
-     * permet de savoir si le joueur à récupérer tous les indices, retourne vrai si oui
+     * permet de savoir si le joueur Ã  rÃ©cupÃ©rer tous les indices, retourne vrai si oui
      * @return true or false
      */
     private boolean verifierIndice()
@@ -268,7 +268,7 @@ public class Jeu {
             {
                 if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
                 {
-                    gui.afficher("Bravo vous avez réussi à résoudre l'enquête !");
+                    gui.afficher("Bravo vous avez rÃ©ussi Ã  rÃ©soudre l'enquÃªte !");
                     gui.afficher();
                     terminer();
                     trouve = true;
@@ -282,30 +282,30 @@ public class Jeu {
             }
             if(!trouve)
             {
-                gui.afficher("Vous n'avez pas réussi à résoudre l'enquête, malgré vos trois chances... Dommage");
+                gui.afficher("Vous n'avez pas rÃ©ussi Ã  rÃ©soudre l'enquÃªte, malgrÃ© vos trois chances... Dommage");
                 gui.afficher();
                 terminer();
             }
         }
         else
         {
-            gui.afficher("Vous n'avez pas récupérer tous les indices, vous ne pouvez donc pas encore résoudre l'enquête.");
+            gui.afficher("Vous n'avez pas rÃ©cupÃ©rer tous les indices, vous ne pouvez donc pas encore rÃ©soudre l'enquÃªte.");
             gui.afficher();
         }
     }
 
     /**
-     * vérifie s'il y a une PNJ dans la pièce
-     * si oui, le joueur récupère son témoignage
+     * vÃ©rifie s'il y a une PNJ dans la piÃ¨ce
+     * si oui, le joueur rÃ©cupÃ¨re son tÃ©moignage
      */
     private void parler() throws Exception {
         if (zoneCourante.PNJ()) {
-            Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "Témoignage", zoneCourante);
-            gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
-            if(joueur.trouveDescription(i.getDescription())) {
-                joueur.ajouterIndice(i);
-            } else {
-                Indices.setIncrement(-1);
+            Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "TÃ©moignage", zoneCourante);
+           // gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
+           // if(joueur.trouveDescription(i.getDescription())) {
+             //   joueur.ajouterIndice(i);
+          //  } else {
+            //    Indices.setIncrement(-1);
             }
 
             if (zoneCourante.getPNJ().getNom() == "Indigo") {
@@ -313,7 +313,7 @@ public class Jeu {
                 for (PNJ unPnj : lesPnj) {
                     nomDesPnj += unPnj.toString() + ",\n";
                 }
-                gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes présente dans ce manoir sont : \n" + nomDesPnj);
+                gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes prÃ©sente dans ce manoir sont : \n" + nomDesPnj);
                 if (verifierIndice())
                     gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
 
@@ -323,17 +323,17 @@ public class Jeu {
                     for (PNJ unPnj : lesPnj) {
                         nomDesPnj += unPnj.toString() + ",\n";
                     }
-                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes pr�sente dans ce manoir sont : \n" + nomDesPnj);
+                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes présente dans ce manoir sont : \n" + nomDesPnj);
                     if (verifierIndice())
                         gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
                 }
-            } else gui.afficher("Il n'y a personne dans la pièce.");
+            } else gui.afficher("Il n'y a personne dans la piÃ¨ce.");
         }
     }
 
     /**
-     * permet de chercher des indices dans la pièce
-     * s'il y a un indice, le joueur le récupère
+     * permet de chercher des indices dans la piÃ¨ce
+     * s'il y a un indice, le joueur le rÃ©cupÃ¨re
      */
     private void rechercher()
     {
@@ -342,37 +342,37 @@ public class Jeu {
             if(!joueur.trouverIndice(zoneCourante.getIndice().getNom()))
             {
                 joueur.ajouterIndice(zoneCourante.getIndice());
-                gui.afficher("Vous venez de r�cup�rer un indice : " + zoneCourante.getIndice().getDescription());
+                gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
                 if (zoneCourante.getIndice().getNom() == "Observation du corps") {
-                    zoneCourante.ajouteIndice(new Indices("Pierre a lanc� une boule de billard sur la fen�tre,\ncette derni�re s'est bris�e", "Bouts de verre", zoneCourante));
+                    zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre,\ncette dernière s'est brisée", "Bouts de verre", zoneCourante));
 
                 } else if (zoneCourante.getIndice().getNom() == "Bouts de verre") {
-                    zoneCourante.ajouteIndice(new Indices("Vous avez trouv� un bouton de chemise sous la table de billard.\n" +
-                            "Ce bouton ressemble comme deux gouttes d'eau à celui de Pierre.\nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
+                    zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard.\n" +
+                            "Ce bouton ressemble comme deux gouttes d'eau Ã  celui de Pierre.\nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
                     lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bizarre ..");
                 } else if (zoneCourante.getIndice().getNom() == "Arme du crime")
-                    lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit �tre d'Agathe !");
+                    lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit être d'Agathe !");
 
                 else if (zoneCourante.getIndice().getNom() == "Lettre d'amour") {
-                    lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre.\nCertes il n'�tait pas vraiment mon ami...");
+                    lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre.\nCertes il n'était pas vraiment mon ami...");
                     gui.afficher("Vous remarquez qu'il manque quelque chose sur sa chemise...");
                 } else if (zoneCourante.getIndice().getNom() == "Alliance")
-                    gui.afficher(" Mme Duch�ne est suspecte");
+                    gui.afficher(" Mme Duchêne est suspecte");
                 else if (zoneCourante.getIndice().getNom() == "Bouton de chemise") {
                     lesZones[9].ajouterPNJSurMap(lesPnj.get(3));
                     lesZones[9].setNomImage("caveAvecPierre.jpg");
                     zoneCourante.indiceRecupere();
                 } else zoneCourante.indiceRecupere();
             }
-            else gui.afficher("Vous avez d�j� r�cup�r� les indices de la pi�ce");
+            else gui.afficher("Vous avez déjà  récupéré les indices de la pièce");
         }
-        else gui.afficher("Il n'y a pas d'indice dans la pi�ce");
+        else gui.afficher("Il n'y a pas d'indice dans la pièce");
         gui.afficher();
     }
 
     /**
-     * permet d'afficher tous les indices que le joueur a ramass�
+     * permet d'afficher tous les indices que le joueur a ramassé
      */
     public void SacADos()
     {
@@ -384,7 +384,7 @@ public class Jeu {
                 sac += i.getNom() + " : " + i.getDescription() + "\n";
             }
         }
-        else sac= "Il n'y a pas d'indice dans le sac à dos";
+        else sac= "Il n'y a pas d'indice dans le sac Ã  dos";
 
         gui.afficher(sac);
         gui.afficher();
