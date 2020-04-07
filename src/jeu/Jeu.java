@@ -266,7 +266,7 @@ public class Jeu {
         {
             if(nbChance <= 3 && !trouve)
             {
-                if((lireNom == "PIERRE") &&(lireArme == "COUTEAU"))
+                if((lireNom.equals("PIERRE")) && (lireArme.equals("COUTEAU")))
                 {
                     gui.afficher("Bravo vous avez rÃ©ussi Ã  rÃ©soudre l'enquÃªte !");
                     gui.afficher();
@@ -306,7 +306,7 @@ public class Jeu {
              //   joueur.ajouterIndice(i);
           //  } else {
             //    Indices.setIncrement(-1);
-            }
+
 
             if (zoneCourante.getPNJ().getNom() == "Indigo") {
                 String nomDesPnj = "";
