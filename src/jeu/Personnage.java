@@ -6,7 +6,7 @@ public abstract class Personnage {
 
     /**
      * Constructeur
-     *@param nNom : nom du personnage
+     *@param pNom : nom du personnage
      */
     public Personnage(String pNom)
     {
