@@ -8,14 +8,14 @@ package jeu;
 public class GUI implements ActionListener
 {
     private static int heure=0,minute=0,seconde=0; // pour le chrono
-    private Jeu jeu;
-    private JFrame fenetre;
+    private final Jeu jeu;
+    private final JFrame fenetre;
     private JTextField entree;
     private JTextArea texte;
     private JLabel image;
-    private boolean finJeu;
+    private final boolean finJeu;
 
-    public GUI(Jeu j) {
+    public GUI(final Jeu j) {
         jeu = j;
         finJeu = false;
         fenetre = new JFrame("Jeu");
@@ -23,17 +23,18 @@ public class GUI implements ActionListener
 
         // Le Chrono
         /* Le timer */
-        int delais=1000;
+        final int delais = 1000;
 
         /* création des composants */
-        final JLabel Label1 = new JLabel(heure+":"+minute+":"+seconde); /* déclarer final car une classe interne va acceder à ce composant */
+        final JLabel Label1 = new JLabel(heure + ":" + minute + ":"
+                + seconde); /* déclarer final car une classe interne va acceder à ce composant */
         final JButton debut = new JButton("Start");
-        JButton fin = new JButton("Remise à zéro");
-        JPanel Panel1 = new JPanel();
+        final JButton fin = new JButton("Remise à zéro");
+        final JPanel Panel1 = new JPanel();
 
         /* Action réalisé par le timer */
-        ActionListener tache_timer = new ActionListener() {
-            public void actionPerformed(ActionEvent e1) {
+        final ActionListener tache_timer = new ActionListener() {
+            public void actionPerformed(final ActionEvent e1) {
                 seconde++;
                 if (seconde == 60) {
                     seconde = 0;
@@ -48,57 +49,49 @@ public class GUI implements ActionListener
 
                     fenetre.dispose();
 
-                } else Label1.setText(heure + ":" + minute + ":" + seconde);/* rafraichir le label */
+                } else
+                    Label1.setText(heure + ":" + minute + ":" + seconde);/* rafraichir le label */
             }
         };
         /* instanciation du timer */
-        final Timer timer1= new Timer(delais,tache_timer);
+        final Timer timer1 = new Timer(delais, tache_timer);
 
         /*
-         * Ajout des composants aux conteneurs avec formatage 
+         * Ajout des composants aux conteneurs avec formatage
          */
         Panel1.add(debut);
         Panel1.add(fin);
-        Label1.setBorder(new EmptyBorder(10,135,10,10));
-        fenetre.getContentPane().add(Label1,"North");
-        fenetre.getContentPane().add(Panel1,"South");
+        Label1.setBorder(new EmptyBorder(10, 135, 10, 10));
+        fenetre.getContentPane().add(Label1, "North");
+        fenetre.getContentPane().add(Panel1, "South");
 
         /*
-        *Action provoqué par l'utilisateur
-        * Lors du clic sur le bouton debut
-        */
-        debut.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+         * Action provoqué par l'utilisateur Lors du clic sur le bouton debut
+         */
+        debut.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
                 String texte;
-                texte=debut.getText();
-                if(texte.compareTo("Start")==0)
-                {
+                texte = debut.getText();
+                if (texte.compareTo("Start") == 0) {
                     debut.setText("Stop ");
                     timer1.start();
-                }
-                else if(texte.compareTo("Stop ")==0)
-                {
+                } else if (texte.compareTo("Stop ") == 0) {
                     debut.setText("Start");
                     timer1.stop();
                 }
             }
         });
         /* Lors du clic sur le bouton fin */
-        fin.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        fin.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
                 String texte;
-                texte=debut.getText();
-                if(texte.compareTo("Start")==0)
-                {
-                    heure=0;
-                    minute=0;
-                    seconde=0;
+                texte = debut.getText();
+                if (texte.compareTo("Start") == 0) {
+                    heure = 0;
+                    minute = 0;
+                    seconde = 0;
                     debut.setText("Start");
-                    Label1.setText(heure+":"+minute+":"+seconde);
+                    Label1.setText(heure + ":" + minute + ":" + seconde);
                 }
             }
         });
@@ -107,9 +100,11 @@ public class GUI implements ActionListener
         fenetre.pack();
     }
 
-
-
-    public void afficher(String s) {
+    
+    /** 
+     * @param s
+     */
+    public void afficher(final String s) {
         texte.append(s);
         texte.setCaretPosition(texte.getDocument().getLength());
     }
@@ -118,32 +113,40 @@ public class GUI implements ActionListener
         afficher("\n");
     }
 
-    public void afficheImage( String nomImage) {
-        URL imageURL = this.getClass().getClassLoader().getResource("jeu/images/" + nomImage);
-        if( imageURL != null ) {
-            image.setIcon( new ImageIcon( imageURL ));
+    
+    /** 
+     * @param nomImage
+     */
+    public void afficheImage(final String nomImage) {
+        final URL imageURL = this.getClass().getClassLoader().getResource("jeu/images/" + nomImage);
+        if (imageURL != null) {
+            image.setIcon(new ImageIcon(imageURL));
             fenetre.pack();
         }
     }
 
-    public void enable(boolean ok) {
+    
+    /** 
+     * @param ok
+     */
+    public void enable(final boolean ok) {
         entree.setEditable(ok);
-        if ( ! ok )
+        if (!ok)
             entree.getCaret().setBlinkRate(0);
     }
 
     private void creerGUI() {
-        //    fenetre = new JFrame("Jeu");
+        // fenetre = new JFrame("Jeu");
 
         entree = new JTextField(34);
 
         texte = new JTextArea();
         texte.setEditable(false);
-        JScrollPane listScroller = new JScrollPane(texte);
+        final JScrollPane listScroller = new JScrollPane(texte);
         listScroller.setPreferredSize(new Dimension(200, 200));
-        listScroller.setMinimumSize(new Dimension(100,100));
+        listScroller.setMinimumSize(new Dimension(100, 100));
 
-        JPanel panel = new JPanel();
+        final JPanel panel = new JPanel();
         image = new JLabel();
 
         panel.setLayout(new BorderLayout());
@@ -162,16 +165,24 @@ public class GUI implements ActionListener
         entree.requestFocus();
     }
 
-    public void actionPerformed(ActionEvent e) {
+    
+    /** 
+     * @param e
+     */
+    public void actionPerformed(final ActionEvent e) {
         try {
             executerCommande();
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    
+    /** 
+     * @throws Exception
+     */
     private void executerCommande() throws Exception {
-        String commandeLue = entree.getText();
+        final String commandeLue = entree.getText();
         entree.setText("");
         jeu.traiterCommande( commandeLue);
     }

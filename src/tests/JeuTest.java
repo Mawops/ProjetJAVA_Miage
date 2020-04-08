@@ -31,7 +31,7 @@ class JeuTest {
         String cmd3 = "ACCUSER COUTEAU INDIGO OK OK";
         assertFalse(cmd1.matches("ACCUSER [A-Z]* [A-Z]*"));
         assertTrue(cmd2.matches("ACCUSER [A-Z]* [A-Z]*"));
-        assertFalse(cmd1.matches("ACCUSER [A-Z]* [A-Z]*"));
+        assertFalse(cmd3.matches("ACCUSER [A-Z]* [A-Z]*"));
     }
 
 }
