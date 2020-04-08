@@ -19,7 +19,6 @@ public class GUI implements ActionListener
         jeu = j;
         finJeu = false;
         fenetre = new JFrame("Jeu");
-        //JPanel panel = new JPanel();
         creerGUI();
 
         // Le Chrono
@@ -30,7 +29,6 @@ public class GUI implements ActionListener
         final JLabel Label1 = new JLabel(heure+":"+minute+":"+seconde); /* déclarer final car une classe interne va acceder à ce composant */
         final JButton debut = new JButton("Start");
         JButton fin = new JButton("Remise à zéro");
-        // JFrame fenetre = new JFrame("Chronomètre");
         JPanel Panel1 = new JPanel();
 
         /* Action réalisé par le timer */
@@ -56,15 +54,19 @@ public class GUI implements ActionListener
         /* instanciation du timer */
         final Timer timer1= new Timer(delais,tache_timer);
 
-        /* Ajout des composants aux conteneurs avec formatage */
+        /*
+         * Ajout des composants aux conteneurs avec formatage 
+         */
         Panel1.add(debut);
         Panel1.add(fin);
         Label1.setBorder(new EmptyBorder(10,135,10,10));
         fenetre.getContentPane().add(Label1,"North");
         fenetre.getContentPane().add(Panel1,"South");
 
-        /* Action provoqué par l'utilisateur */
-        /* Lors du clic sur le bouton debut */
+        /*
+        *Action provoqué par l'utilisateur
+        * Lors du clic sur le bouton debut
+        */
         debut.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -103,9 +105,6 @@ public class GUI implements ActionListener
 
         /* Afficher l'ihm */
         fenetre.pack();
-        //fenetre.setLocation(350,200);  /* Déplacer la fenetre à ce nouvel emplacement */
-        //fenetre.setSize(300,100);   /* dimension de la fenetre */
-        //fenetre.show();
     }
 
 
@@ -175,17 +174,5 @@ public class GUI implements ActionListener
         String commandeLue = entree.getText();
         entree.setText("");
         jeu.traiterCommande( commandeLue);
-    }
-    private void executeCommande()
-    {
-        afficher("Quel est le tueur ? ");
-        afficher();
-        String tueur = entree.getText();
-        entree.setText("");
-        afficher("Quel est l'arme ? ");
-        afficher();
-        String arme = entree.getText();
-        entree.setText("");
-        jeu.resoudreEnquete(tueur, arme);
     }
 }
