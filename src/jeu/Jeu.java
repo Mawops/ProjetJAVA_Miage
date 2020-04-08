@@ -299,35 +299,24 @@ public class Jeu {
      * si oui, le joueur rÃ©cupÃ¨re son tÃ©moignage
      */
     private void parler() throws Exception {
-        if (zoneCourante.PNJ()) {
-            Indices i = new Indices(zoneCourante.getDescriptionPNJ(), "TÃ©moignage", zoneCourante);
-           // gui.afficher(zoneCourante.getPNJ().toString() + " : " + zoneCourante.getDescriptionPNJ());
-           // if(joueur.trouveDescription(i.getDescription())) {
-             //   joueur.ajouterIndice(i);
-          //  } else {
-            //    Indices.setIncrement(-1);
-
-
-            if (zoneCourante.getPNJ().getNom() == "Indigo") {
+        if (zoneCourante.PNJ())
+        {
+            if (zoneCourante.getPNJ().getNom() == "Indigo")
+            {
                 String nomDesPnj = "";
-                for (PNJ unPnj : lesPnj) {
+
+                for (PNJ unPnj : lesPnj)
+                {
                     nomDesPnj += unPnj.toString() + ",\n";
                 }
                 gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes prÃ©sente dans ce manoir sont : \n" + nomDesPnj);
+
                 if (verifierIndice())
                     gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
 
-                joueur.ajouterIndice(i);
-                if (zoneCourante.getPNJ().getNom() == "Indigo") {
-                    nomDesPnj = "";
-                    for (PNJ unPnj : lesPnj) {
-                        nomDesPnj += unPnj.toString() + ",\n";
-                    }
-                    gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Pour rappels les personnes présente dans ce manoir sont : \n" + nomDesPnj);
-                    if (verifierIndice())
-                        gui.afficher("\n" + zoneCourante.getPNJ().toString() + " : Voulez-vous m'indiquer qui est le meurtrier ainsi que l'arme du crime? ACCUSER [ARME] [NOM DU PERSONNAGE SUSPECTE] / NON");
-                }
-            } else gui.afficher("Il n'y a personne dans la piÃ¨ce.");
+            }
+            else gui.afficher("Il n'y a personne dans la pièce.");
+            gui.afficher();
         }
     }
 
@@ -344,26 +333,29 @@ public class Jeu {
                 joueur.ajouterIndice(zoneCourante.getIndice());
                 gui.afficher("Vous venez de récupérer un indice : " + zoneCourante.getIndice().getDescription());
 
-                if (zoneCourante.getIndice().getNom() == "Observation du corps") {
-                    zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre,\ncette dernière s'est brisée", "Bouts de verre", zoneCourante));
+                String nomIndice = zoneCourante.getIndice().getNom();
 
-                } else if (zoneCourante.getIndice().getNom() == "Bouts de verre") {
-                    zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard.\n" +
-                            "Ce bouton ressemble comme deux gouttes d'eau Ã  celui de Pierre.\nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
-                    lesPnj.get(2).setTemoignage("Il jouait avec Pierre, ceci est bizarre ..");
-                } else if (zoneCourante.getIndice().getNom() == "Arme du crime")
-                    lesPnj.get(1).setTemoignage("Une arme ??? Le coupable doit être d'Agathe !");
-
-                else if (zoneCourante.getIndice().getNom() == "Lettre d'amour") {
-                    lesPnj.get(3).setTemoignage("Je.... je ne comprends pas cette lettre.\nCertes il n'était pas vraiment mon ami...");
-                    gui.afficher("Vous remarquez qu'il manque quelque chose sur sa chemise...");
-                } else if (zoneCourante.getIndice().getNom() == "Alliance")
-                    gui.afficher(" Mme Duchêne est suspecte");
-                else if (zoneCourante.getIndice().getNom() == "Bouton de chemise") {
-                    lesZones[9].ajouterPNJSurMap(lesPnj.get(3));
-                    lesZones[9].setNomImage("caveAvecPierre.jpg");
-                    zoneCourante.indiceRecupere();
-                } else zoneCourante.indiceRecupere();
+                switch(nomIndice)
+                {
+                    case "Observation du corps" :
+                        zoneCourante.ajouteIndice(new Indices("Pierre a lancé une boule de billard sur la fenêtre,\ncette dernière s'est brisée", "Bouts de verre", zoneCourante));
+                        break;
+                    case "Bouts de verre" :
+                        zoneCourante.ajouteIndice(new Indices("Vous avez trouvé un bouton de chemise sous la table de billard.\n" +
+                                "Ce bouton ressemble comme deux gouttes d'eau Ã  celui de Pierre.\nCe dernier avait un bouton manquant sur sa chemise", "Bouton de chemise", zoneCourante));
+                        break;
+                    case "Alliance" :
+                        gui.afficher(" Mme Duchêne est suspecte");
+                        break;
+                    case "Bouton de chemise" :
+                        lesZones[9].ajouterPNJSurMap(lesPnj.get(3));
+                        lesZones[9].setNomImage("caveAvecPierre.jpg");
+                        zoneCourante.indiceRecupere();
+                        break;
+                    default :
+                        zoneCourante.indiceRecupere();
+                        break;
+                }
             }
             else gui.afficher("Vous avez déjà  récupéré les indices de la pièce");
         }
